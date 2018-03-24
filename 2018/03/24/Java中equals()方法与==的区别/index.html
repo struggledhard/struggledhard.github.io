@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概述Java中equals()方法和”==”的用法在求职中经常遇到，学习之后时间长了容易忘记，所以整理一下学习笔记以便日后复习。若有不对，欢迎指正，大家相互学习。 “==”用法1. 基本数据类型Java基本类型分别为：byte、short、char、int、long、float、double、boolean。用”==”基本数据类型进行比较时，比较的是它们的值是否相同。例如： 12345678int">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中equals()方法与&quot;==&quot;的区别">
+<meta property="og:url" content="http://struggledhard.com/2018/03/24/Java中equals()方法与==的区别/index.html">
+<meta property="og:site_name" content="struggledhard&#39;s blog">
+<meta property="og:description" content="概述Java中equals()方法和”==”的用法在求职中经常遇到，学习之后时间长了容易忘记，所以整理一下学习笔记以便日后复习。若有不对，欢迎指正，大家相互学习。 “==”用法1. 基本数据类型Java基本类型分别为：byte、short、char、int、long、float、double、boolean。用”==”基本数据类型进行比较时，比较的是它们的值是否相同。例如： 12345678int">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-24T16:10:42.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java中equals()方法与&quot;==&quot;的区别">
+<meta name="twitter:description" content="概述Java中equals()方法和”==”的用法在求职中经常遇到，学习之后时间长了容易忘记，所以整理一下学习笔记以便日后复习。若有不对，欢迎指正，大家相互学习。 “==”用法1. 基本数据类型Java基本类型分别为：byte、short、char、int、long、float、double、boolean。用”==”基本数据类型进行比较时，比较的是它们的值是否相同。例如： 12345678int">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://struggledhard.com/2018/03/24/Java中equals()方法与==的区别/"/>
+
+
+
+
+
+  <title>Java中equals()方法与"=="的区别 | struggledhard's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">struggledhard's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">everthing is from this time</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-book">
+          <a href="/book/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            读书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resources">
+          <a href="/resources/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-database"></i> <br />
+            
+            资源
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://struggledhard.com/2018/03/24/Java中equals()方法与==的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="struggledhard">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="struggledhard's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java中equals()方法与"=="的区别</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-24T23:47:01+08:00">
+                2018-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Java中equals()方法和”==”的用法在求职中经常遇到，学习之后时间长了容易忘记，所以整理一下学习笔记以便日后复习。若有不对，欢迎指正，大家相互学习。</p>
+<h3 id="“-”用法"><a href="#“-”用法" class="headerlink" title="“==”用法"></a>“==”用法</h3><h4 id="1-基本数据类型"><a href="#1-基本数据类型" class="headerlink" title="1. 基本数据类型"></a>1. 基本数据类型</h4><p>Java基本类型分别为：byte、short、char、int、long、float、double、boolean。用”==”基本数据类型进行比较时，比较的是它们的值是否相同。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int a = 10;</span><br><span class="line">int b = 10;</span><br><span class="line">int c = 20;</span><br><span class="line">char d = &apos;a&apos;;</span><br><span class="line">char e = &apos;a&apos;;</span><br><span class="line">System.out.println(a == b);  // true</span><br><span class="line">System.out.println(a == c);  // false</span><br><span class="line">System.out.println(d == e);  // true</span><br></pre></td></tr></table></figure>
+<p><strong><em>注意：对于基本数据类型而言，没有equals()方法。</em></strong></p>
+<h4 id="2-引用类型"><a href="#2-引用类型" class="headerlink" title="2. 引用类型"></a>2. 引用类型</h4><p>用于引用类型时，比较的是两个引用变量在内存中存放的地址是否相同，new出来的两个对象地址相同返回true，否则返回false。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class HelloWorld &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Hello hello1 = new Hello();</span><br><span class="line">		Hello hello2 = hello1;</span><br><span class="line">		Hello hello3 = new Hello();</span><br><span class="line">		System.out.println(hello1 == hello2);  // hello2 是 hello1 的引用，同指向一个内存空间。返回true </span><br><span class="line">		System.out.println(hello1 == hello3);	// hello1 和 hello3 都是 new 出来的对象，指向不同的内存空间。返回false	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class Hello &#123;</span><br><span class="line">	private String hello;</span><br><span class="line"></span><br><span class="line">	public Hello() &#123;</span><br><span class="line">		this.hello = &quot;你好&quot;;</span><br><span class="line">	&#125;	</span><br><span class="line">	public String getHello() &#123;</span><br><span class="line">		return hello;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setHello(String hello) &#123;</span><br><span class="line">		this.hello = hello;</span><br><span class="line">	&#125;		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="equals-方法"><a href="#equals-方法" class="headerlink" title="equals()方法"></a>equals()方法</h3><p>equals方法是基类Object中的方法，所以对于所有继承于Object类都会有该方法。Object类中equals()方法的源码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//Object类中的equals方法</span><br><span class="line">public boolean equals(Object obj) &#123;  </span><br><span class="line">       return (this == obj);  // 比较两个引用对象是否相等，即是否指向同一个对象</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>默认情况下，当使用equals()方法对两个对象进行比较时，比较的是两个对象的地址(此时与”==”用法相同)。测试如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class HelloWorld &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Hello hello1 = new Hello();</span><br><span class="line">		Hello hello2 = hello1;</span><br><span class="line">		Hello hello3 = new Hello();</span><br><span class="line">		System.out.println(hello1.equals(hello2));  // 两个对象地址相同，返回true</span><br><span class="line">		System.out.println(hello1.equals(hello3));	// 两个对象地址不同，返回false	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class Hello &#123;</span><br><span class="line">	private String hello;</span><br><span class="line"></span><br><span class="line">	public Hello() &#123;</span><br><span class="line">		this.hello = &quot;你好&quot;;</span><br><span class="line">	&#125;	</span><br><span class="line">	public String getHello() &#123;</span><br><span class="line">		return hello;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setHello(String hello) &#123;</span><br><span class="line">		this.hello = hello;</span><br><span class="line">	&#125;		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于我们自己写的类，想要通过equal()方法比较两个对象的内容，就要重写equals()方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">public class HelloWorld &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Hello hello1 = new Hello();</span><br><span class="line">		Hello hello2 = hello1;</span><br><span class="line">		Hello hello3 = new Hello();</span><br><span class="line">		System.out.println(hello1.equals(hello2)); // 所指向的对象内容一样，返回true</span><br><span class="line">		System.out.println(hello1.equals(hello3)); // 内容一样，返回true</span><br><span class="line">		System.out.println(hello1 == hello3);  // 比较两个对象的地址，地址不一样，返回false</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class Hello &#123;</span><br><span class="line">	private String hello;</span><br><span class="line"></span><br><span class="line">	public Hello() &#123;</span><br><span class="line">		this.hello = &quot;你好&quot;;</span><br><span class="line">	&#125;	</span><br><span class="line">	public String getHello() &#123;</span><br><span class="line">		return hello;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setHello(String hello) &#123;</span><br><span class="line">		this.hello = hello;</span><br><span class="line">	&#125;			</span><br><span class="line">	// 重写Object类的equals()方法</span><br><span class="line">	@Override</span><br><span class="line">	public boolean equals(Object obj) &#123;</span><br><span class="line">		if (this == obj) &#123;  // 传入的对象就是自己，肯定时相等的</span><br><span class="line">			return true;</span><br><span class="line">		&#125;</span><br><span class="line">		if (obj == null) &#123;  // 传入的对象为空，不相等</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line">		if (getClass() != obj.getClass()) &#123; // 判断是否为同一类型的，如果时Hello类和其他类，就不用比较了</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line">		Hello other = (Hello)obj;</span><br><span class="line">		if (hello == null) &#123;</span><br><span class="line">			if (other.hello != null) &#123;</span><br><span class="line">				return false;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; else if (!hello.equals(other.hello)) &#123; //  若hello属性相等，就相等</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="String类中的equals-方法"><a href="#String类中的equals-方法" class="headerlink" title="String类中的equals()方法"></a>String类中的equals()方法</h3><p>下面时String类中equals()方法的具体实现，重写之后用来比较指向的字符串对象所存储的字符串是否相等：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// String类中的equals方法</span><br><span class="line">public boolean equals(Object anObject) &#123;</span><br><span class="line">         if (this == anObject) &#123;</span><br><span class="line">             return true;</span><br><span class="line">         &#125;</span><br><span class="line">         if (anObject instanceof String) &#123;</span><br><span class="line">             String anotherString = (String)anObject;</span><br><span class="line">             int n = value.length;</span><br><span class="line">             if (n == anotherString.value.length) &#123;</span><br><span class="line">                 char v1[] = value;</span><br><span class="line">                 char v2[] = anotherString.value;</span><br><span class="line">                 int i = 0;</span><br><span class="line">                 while (n-- != 0) &#123;</span><br><span class="line">                    if (v1[i] != v2[i])</span><br><span class="line">                         return false;</span><br><span class="line">                     i++;</span><br><span class="line">                 &#125;</span><br><span class="line">                 return true;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         return false;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+<p>String类中重写了equals()方法，调用equals()方法比较两个String对象时，比较的是String的内容。还有一些类如Double，Date，Integer等，都对equals()方法进行了重写，用来比较两个对象所存储的内容是否相等。就拿String类来举例，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		</span><br><span class="line">		String s1 = &quot;abc&quot;;</span><br><span class="line">		String s2 = &quot;abc&quot;;</span><br><span class="line">		String s3 = new String(&quot;abc&quot;);</span><br><span class="line">		</span><br><span class="line">		System.out.println(s1.equals(s2));  // 两个对象所存储的内容相等，返回true</span><br><span class="line">		System.out.println(s1 == s2);  // 两个对象所存储的内容相等，返回true</span><br><span class="line">		</span><br><span class="line">		System.out.println(s1.equals(s3));  // 两个对象所存储的内容相等，返回true</span><br><span class="line">		System.out.println(s1 == s3);  // &quot;==&quot;比较两个对象的地址，两个对象地址不一样，返回false</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li><p>使用“==”时，当时基本数据类型比较时，比较它们存储的值是否相等。当比较引用类型时，比较引用变量所指向的对象地址是否相等。</p>
+</li>
+<li><p>使用equals() 方法时，但equals方法不能作用于基本数据类型。如果没有对equals方法进行重写，比较的是引用变量所指向的对象地址是否相等。像String类、Integer类等对equals方法进行了重写，比较的是指向对象的内容是否相等。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/23/Git学习笔记/" rel="next" title="Git学习笔记">
+                <i class="fa fa-chevron-left"></i> Git学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.png"
+                alt="struggledhard" />
+            
+              <p class="site-author-name" itemprop="name">struggledhard</p>
+              <p class="site-description motion-element" itemprop="description">心猿意码</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#“-”用法"><span class="nav-number">2.</span> <span class="nav-text">“==”用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-基本数据类型"><span class="nav-number">2.1.</span> <span class="nav-text">1. 基本数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-引用类型"><span class="nav-number">2.2.</span> <span class="nav-text">2. 引用类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equals-方法"><span class="nav-number">3.</span> <span class="nav-text">equals()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String类中的equals-方法"><span class="nav-number">4.</span> <span class="nav-text">String类中的equals()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">struggledhard</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
