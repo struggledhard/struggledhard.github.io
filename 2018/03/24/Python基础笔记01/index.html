@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="struggledhard&#39;s blog">
 <meta property="og:description" content="基本类型数据类型：整数（任意大小的整数，包括负整数）、浮点数（对于很大或很小的浮点数必须用科学计数法，如：12.5e9）、字符串、布尔值（注意：Ture，False）、空值（一种特殊的值。用None表示。但不能理解为0，因为0是有意义的，而None是一个特殊的空值）。还有列表、字典等多种数据类型。 python提供一个input()，可以让用户输入字符串存放在一个变量里。 python以‘#’开头">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-25T13:58:42.635Z">
+<meta property="og:updated_time" content="2018-03-25T14:15:09.661Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python基础笔记(一)">
 <meta name="twitter:description" content="基本类型数据类型：整数（任意大小的整数，包括负整数）、浮点数（对于很大或很小的浮点数必须用科学计数法，如：12.5e9）、字符串、布尔值（注意：Ture，False）、空值（一种特殊的值。用None表示。但不能理解为0，因为0是有意义的，而None是一个特殊的空值）。还有列表、字典等多种数据类型。 python提供一个input()，可以让用户输入字符串存放在一个变量里。 python以‘#’开头">
@@ -380,7 +380,33 @@
 <p>如果字符串里面有很多字符需要转义，就需要很多‘\’，为了简化，python还允许用r’ ‘表示’ ‘内部的字符串默认不转义。</p>
 <p>python的除法是精确的，‘/’除法计算结果是浮点数，即使两个整数整除结果也是浮点数。用‘//’除法只取结果的整数部分。</p>
 <p>ASCII编码是一个字节，而Unicode编码通常是2个字节，UTF-8编码把一个Unicode字符根据不同的数字大小编码成1-6个字节</p>
-<p>python中%来格式化字符串：<br>占位符 | 替换内容<br>—|—<br>%d | 整数<br>%f | 浮点数<br>%s | 字符串<br>%x | 十六进制整数</p>
+<p>python中%来格式化字符串：</p>
+<table>
+<thead>
+<tr>
+<th>占位符</th>
+<th>替换内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%d</td>
+<td>整数</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>浮点数</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>十六进制整数</td>
+</tr>
+</tbody>
+</table>
 <h4 id="list（列表）"><a href="#list（列表）" class="headerlink" title="list（列表）"></a>list（列表）</h4><p>list是一种可变的有序的集合，可以随时添加和删除其中元素（相当于Java的数组），可以用len(xxx)得到元素个数。list里面可以是不同数据类型的元素。也可以是另一个list（二维数组的访问方式进行访问）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">l = [&apos;aaa&apos;, False, 123]</span><br><span class="line"></span><br><span class="line">a = [&apos;aaa&apos;, [&apos;bbb&apos;, &apos;ccc&apos;], &apos;ddd&apos;, &apos;eee&apos;]</span><br></pre></td></tr></table></figure>
 <table>
