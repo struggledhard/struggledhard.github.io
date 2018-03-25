@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="struggledhard&#39;s blog">
 <meta property="og:description" content="基本类型数据类型：整数（任意大小的整数，包括负整数）、浮点数（对于很大或很小的浮点数必须用科学计数法，如：12.5e9）、字符串、布尔值（注意：Ture，False）、空值（一种特殊的值。用None表示。但不能理解为0，因为0是有意义的，而None是一个特殊的空值）。还有列表、字典等多种数据类型。 python提供一个input()，可以让用户输入字符串存放在一个变量里。 python以‘#’开头">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-25T14:15:09.661Z">
+<meta property="og:updated_time" content="2018-03-25T14:31:31.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python基础笔记(一)">
 <meta name="twitter:description" content="基本类型数据类型：整数（任意大小的整数，包括负整数）、浮点数（对于很大或很小的浮点数必须用科学计数法，如：12.5e9）、字符串、布尔值（注意：Ture，False）、空值（一种特殊的值。用None表示。但不能理解为0，因为0是有意义的，而None是一个特殊的空值）。还有列表、字典等多种数据类型。 python提供一个input()，可以让用户输入字符串存放在一个变量里。 python以‘#’开头">
@@ -408,7 +408,7 @@
 </tbody>
 </table>
 <h4 id="list（列表）"><a href="#list（列表）" class="headerlink" title="list（列表）"></a>list（列表）</h4><p>list是一种可变的有序的集合，可以随时添加和删除其中元素（相当于Java的数组），可以用len(xxx)得到元素个数。list里面可以是不同数据类型的元素。也可以是另一个list（二维数组的访问方式进行访问）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">l = [&apos;aaa&apos;, False, 123]</span><br><span class="line"></span><br><span class="line">a = [&apos;aaa&apos;, [&apos;bbb&apos;, &apos;ccc&apos;], &apos;ddd&apos;, &apos;eee&apos;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">l = [<span class="string">'aaa'</span>, <span class="keyword">False</span>, <span class="number">123</span>]</span><br><span class="line"></span><br><span class="line">a = [<span class="string">'aaa'</span>, [<span class="string">'bbb'</span>, <span class="string">'ccc'</span>], <span class="string">'ddd'</span>, <span class="string">'eee'</span>]</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -436,16 +436,16 @@
 </tbody>
 </table>
 <h4 id="tuple（元组）"><a href="#tuple（元组）" class="headerlink" title="tuple（元组）"></a>tuple（元组）</h4><p>元组也是一种有序列表，和list相似，但tuple一旦初始化就不能修改。在定义的时候，tuple的元素就必须被确定。获取元素和获取list元素一样。元组元素可以包含list</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = (&apos;aaaa&apos;, &apos;bbbb&apos;, &apos;cccc&apos;)</span><br><span class="line">a[0],a[1].. // 获取元组数据</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = (<span class="string">'aaaa'</span>, <span class="string">'bbbb'</span>, <span class="string">'cccc'</span>)</span><br><span class="line">a[<span class="number">0</span>],a[<span class="number">1</span>].. // 获取元组数据</span><br></pre></td></tr></table></figure>
 <h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><p>for…in循环，依次把list或tuple中的元素每个迭代出来。</p>
 <p>while循环，只要满足条件就不断循环。</p>
 <p>break退出循环，continue跳过当前循环，进行下一次循环。</p>
 <p>range(xxx)函数生成一个整数序列，从0开始小于xxx的整数。</p>
 <h4 id="dict（字典）"><a href="#dict（字典）" class="headerlink" title="dict（字典）"></a>dict（字典）</h4><p>dict字典，其他语言中称为map，使用键值对（key-value）存储。dict内部存放的顺序和key存放的顺序没有关系。get方法获取key对应得value，pop(key)删除一个key，value也会被删除。dict的key必须是不可变对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;&apos;Michael&apos;: 95, &apos;Bob&apos;: 75, &apos;Tracy&apos;: 85&#125;</span><br><span class="line">d[&apos;Michael&apos;]</span><br><span class="line">95</span><br><span class="line"></span><br><span class="line">d.get(&apos;Michael&apos;)</span><br><span class="line">95</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</span><br><span class="line">d[<span class="string">'Michael'</span>]</span><br><span class="line"><span class="number">95</span></span><br><span class="line"></span><br><span class="line">d.get(<span class="string">'Michael'</span>)</span><br><span class="line"><span class="number">95</span></span><br></pre></td></tr></table></figure>
 <h4 id="set（集合）"><a href="#set（集合）" class="headerlink" title="set（集合）"></a>set（集合）</h4><p>set是一组key的集合，但不存储value，key不能重复，无序。创建一个set需要提供一个list作为输入集合，list中的重复元素会被过滤掉。</p>
 <p>add(key)添加元素到set中。remove(key)删除元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = set([1, 2, 3])</span><br><span class="line">&gt;&gt;&gt; s</span><br><span class="line">&#123;1, 2, 3&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h4><p><a href="http://www.runoob.com/python3/python3-tutorial.html" target="_blank" rel="noopener">菜鸟教程Python3</a></p>
 <p><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" target="_blank" rel="noopener">廖雪峰的官方网站Python3</a></p>
 
