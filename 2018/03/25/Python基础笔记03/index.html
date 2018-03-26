@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="struggledhard&#39;s blog">
 <meta property="og:description" content="类和示例用__init__初始化参数，相当于Java的构造函数。 注意到__init__方法的第一个参数永远是self，表示创建的实例本身，因此，在__init__方法内部，就可以把各种属性绑定到self，因为self就指向创建的实例本身。 获取对象信息拿到一个对象的引用时，如何知道这个对象是什么类型、有哪些方法呢？ 使用type()。判断基本类型较方便。 使用isinstance()。判断cla">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-25T14:35:32.423Z">
+<meta property="og:updated_time" content="2018-03-26T14:27:03.360Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python基础笔记(三)">
 <meta name="twitter:description" content="类和示例用__init__初始化参数，相当于Java的构造函数。 注意到__init__方法的第一个参数永远是self，表示创建的实例本身，因此，在__init__方法内部，就可以把各种属性绑定到self，因为self就指向创建的实例本身。 获取对象信息拿到一个对象的引用时，如何知道这个对象是什么类型、有哪些方法呢？ 使用type()。判断基本类型较方便。 使用isinstance()。判断cla">
@@ -403,27 +403,27 @@
 <p>要把JSON反序列化为Python对象，用loads()或者对应的load()方法，前者把JSON的字符串反序列化，后者从file-like Object中读取字符串并反序列化：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>json_str = <span class="string">'&#123;"age": 20, "score": 88, "name": "Bob"&#125;'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>json.loads(json_str)</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">20</span>, <span class="string">'score'</span>: <span class="number">88</span>, <span class="string">'name'</span>: <span class="string">'Bob'</span>&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="python正则表达式"><a href="#python正则表达式" class="headerlink" title="python正则表达式"></a>python正则表达式</h4><ul>
-<li>用\d可以匹配一个数字，\w可以匹配一个字母或数字</li>
-<li>. 可以匹配任意一个字符</li>
-<li>* 通配符匹配零个或多个字符</li>
-<li>?表示0个或1个字符</li>
-<li>+表示至少一个字符</li>
-<li>用{n}表示n个字符，用{n,m}表示n-m个字符</li>
+<li>用<code>\d</code>可以匹配一个数字，<code>\w</code>可以匹配一个字母或数字</li>
+<li><code>.</code> 可以匹配任意一个字符</li>
+<li><code>\*</code> 通配符匹配零个或多个字符</li>
+<li><code>?</code>表示0个或1个字符</li>
+<li><code>+</code>表示至少一个字符</li>
+<li>用<code>{n}</code>表示n个字符，用<code>{n,m}</code>表示n-m个字符</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">复杂的例子：\d&#123;<span class="number">3</span>&#125;\s+\d&#123;<span class="number">3</span>,<span class="number">8</span>&#125;。</span><br><span class="line"></span><br><span class="line">从左到右解读一下：</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span>\d&#123;<span class="number">3</span>&#125;表示匹配<span class="number">3</span>个数字，例如<span class="string">'010'</span>；</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>\s可以匹配一个空格（也包括Tab等空白符），所以\s+表示至少有一个空格，例如匹配<span class="string">' '</span>，<span class="string">' '</span>等；</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>\d&#123;<span class="number">3</span>,<span class="number">8</span>&#125;表示<span class="number">3</span><span class="number">-8</span>个数字，例如<span class="string">'1234567'</span>。</span><br></pre></td></tr></table></figure>
 <p>要做更精确地匹配，可以用[]表示范围，比如：</p>
 <ul>
-<li>[0-9a-zA-Z_]可以匹配一个数字、字母或者下划线；</li>
-<li>[0-9a-zA-Z_]+可以匹配至少由一个数字、字母或者下划线组成的字符串，比如’a100’，’0_Z’，’Py3000’等等；</li>
-<li>[a-zA-Z_][0-9a-zA-Z_]*可以匹配由字母或下划线开头，后接任意个由一个数字、字母或者下划线组成的字符串，也就是Python合法的变量；</li>
-<li>[a-zA-Z_][0-9a-zA-Z_]{0, 19}更精确地限制了变量的长度是1-20个字符（前面1个字符+后面最多19个字符）。</li>
+<li><code>[0-9a-zA-Z\_]</code>可以匹配一个数字、字母或者下划线；</li>
+<li><code>[0-9a-zA-Z\_]+</code>可以匹配至少由一个数字、字母或者下划线组成的字符串，比如’a100’，’0_Z’，’Py3000’等等；</li>
+<li><code>[a-zA-Z\_][0-9a-zA-Z\_]*</code>可以匹配由字母或下划线开头，后接任意个由一个数字、字母或者下划线组成的字符串，也就是Python合法的变量；</li>
+<li><code>[a-zA-Z\_][0-9a-zA-Z\_]{0, 19}</code>更精确地限制了变量的长度是1-20个字符（前面1个字符+后面最多19个字符）。</li>
 </ul>
-<p>A|B可以匹配A或B，所以(P|p)ython可以匹配’Python’或者’python’。</p>
-<p>\^表示行的开头，^\d表示必须以数字开头。</p>
-<p>$表示行的结束，\d$表示必须以数字结束。</p>
-<p>py也可以匹配’python’，但是加上^py$就变成了整行匹配，就只能匹配’py’了。</p>
+<p><code>A|B</code>可以匹配A或B，所以(P|p)ython可以匹配’Python’或者’python’。</p>
+<p><code>\^</code>表示行的开头，^\d表示必须以数字开头。</p>
+<p><code>$</code>表示行的结束，\d$表示必须以数字结束。</p>
+<p>py也可以匹配’python’，但是加上<code>^py$</code>就变成了整行匹配，就只能匹配<code>&#39;py&#39;</code>了。</p>
 <h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><p>除了简单地判断是否匹配之外，正则表达式还有提取子串的强大功能。用()表示的就是要提取的分组（Group）。比如：</p>
-<p>^(\d{3})-(\d{3,8})$分别定义了两个组，可以直接从匹配的字符串中提取出区号和本地号码：</p>
+<p><code>^(\d{3})-(\d{3,8})$</code>分别定义了两个组，可以直接从匹配的字符串中提取出区号和本地号码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = re.match(<span class="string">r'^(\d&#123;3&#125;)-(\d&#123;3,8&#125;)$'</span>, <span class="string">'010-12345'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m</span><br><span class="line">&lt;_sre.SRE_Match object; span=(<span class="number">0</span>, <span class="number">9</span>), match=<span class="string">'010-12345'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">0</span>)</span><br><span class="line"><span class="string">'010-12345'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">1</span>)</span><br><span class="line"><span class="string">'010'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">2</span>)</span><br><span class="line"><span class="string">'12345'</span></span><br></pre></td></tr></table></figure>
 <p>如果正则表达式中定义了组，就可以在Match对象上用group()方法提取出子串来。</p>
 <p>注意到group(0)永远是原始字符串，group(1)、group(2)……表示第1、2、……个子串。</p>
@@ -592,11 +592,87 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/struggledhard" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
 
           
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-gratipay"></i>
+                阅读推荐
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/lmj623565791" title="鸿洋" target="_blank">鸿洋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/guolin_blog" title="郭霖" target="_blank">郭霖</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://juejin.im/" title="掘金" target="_blank">掘金</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.didispace.com/" title="程序猿DD" target="_blank">程序猿DD</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ityouknow.com/" title="纯洁的微笑" target="_blank">纯洁的微笑</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ifeve.com/" title="并发编程网" target="_blank">并发编程网</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.bysocket.com/" title="泥瓦匠BYSocket" target="_blank">泥瓦匠BYSocket</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/forezp" title="方志朋CSDN博客" target="_blank">方志朋CSDN博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://learnblockchain.cn/" title="深入浅出区块链" target="_blank">深入浅出区块链</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰的官方网站" target="_blank">廖雪峰的官方网站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cuiqingcai.com/" title="崔庆才的个人博客" target="_blank">崔庆才的个人博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dongwm.com/" title="小明明Python之美" target="_blank">小明明Python之美</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.spring4all.com/" title="Spring For All" target="_blank">Spring For All</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://springboot.fun/" title="Spring Boot 中文导航" target="_blank">Spring Boot 中文导航</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
