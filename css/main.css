@@ -1833,7 +1833,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ab7462;
+  background: #53ffaa;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3152,6 +3152,16 @@ pre {
   src: url("/fonts/skh.ttf");
 }
 .site-title {
-  font-size: 30px !important;
+  font-size: 25px !important;
   font-family: 'skh' !important;
+}
+body {
+  background: url("/images/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+.post-block {
+  background: rgba(255,255,255,0.9) none repeat scroll !important;
 }
