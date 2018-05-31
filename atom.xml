@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://struggledhard.com/"/>
-  <updated>2018-05-31T13:10:20.819Z</updated>
+  <updated>2018-05-31T13:13:06.704Z</updated>
   <id>http://struggledhard.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Spring Boot之定义Banner</title>
-    <link href="http://struggledhard.com/2018/05/31/Spring-Boot%E4%B9%8B%E5%AE%9A%E4%B9%89Banner/"/>
-    <id>http://struggledhard.com/2018/05/31/Spring-Boot之定义Banner/</id>
+    <title>Spring Boot自定义Banner</title>
+    <link href="http://struggledhard.com/2018/05/31/Spring-Boot%E8%87%AA%E5%AE%9A%E4%B9%89Banner/"/>
+    <id>http://struggledhard.com/2018/05/31/Spring-Boot自定义Banner/</id>
     <published>2018-05-31T12:18:58.000Z</published>
-    <updated>2018-05-31T13:10:20.819Z</updated>
+    <updated>2018-05-31T13:13:06.704Z</updated>
     
     <content type="html"><![CDATA[<h4 id="自定义Banner"><a href="#自定义Banner" class="headerlink" title="自定义Banner"></a>自定义Banner</h4><p>通过在classpath下添加一个 <code>banner.txt</code> 或设置 <code>banner.location</code> 来指定相应的文件可以改变启动过程中打印的banner,方式非常简单，只需要在Spring Boot工程的 <code>/src/main/resources</code> 目录下创建一个 <code>banner.txt</code> 文件，然后将ASCII字符画复制进去，就能替换默认的banner了。</p><p>如果这个文件有特殊的编码，可以使用 <code>banner.encoding</code> 设置它（默认为UTF-8）。除了文本文件，也可以添加一个 <code>banner.gif</code>，<code>banner.jpg</code> 或 <code>banner.png</code> 图片，或设置 <code>banner.image.location</code> 属性。图片会转换为字符画（ASCII art）形式，并在所有文本banner上方显示。</p><p>在<code>banner.txt</code>中可以使用如下占位符：</p><table><thead><tr><th>变量</th><th>描述</th></tr></thead><tbody><tr><td>${application.version}</td><td>MANIFEST.MF中声明的应用版本号，例如 Implementation-Version: 1.0 会打印 1.0</td></tr><tr><td>${application.formatted-version}</td><td>MANIFEST.MF中声明的被格式化后的应用版本号（被括号包裹且以v作为前缀），用于显示，例如( v1.0 )</td></tr><tr><td>${spring-boot.version}</td><td>当前Spring Boot的版本号，例如 2.0.0.RELEASE</td></tr><tr><td>${spring-boot.formatted-version}</td><td>当前Spring Boot被格式化后的版本号（被括号包裹且以v作为前缀）, 用于显示，例如( v2.0.0.RELEASE )</td></tr><tr><td>${Ansi.NAME}（或${AnsiColor.NAME}，${AnsiBackground.NAME},${AnsiStyle.NAME}）</td><td>NAME代表一种ANSI编码，如：${AnsiColor.BRIGHT_RED}</td></tr><tr><td>${application.title}</td><td>MANIFEST.MF 中声明的应用title，例如 Implementation-Title: MyApp 会打印 MyApp</td></tr></tbody></table><p>如果想以编程的方式产生一个banner，可以使用 <code>SpringBootApplication.setBanner(…)</code> 方法，并实现 <code>org.springframework.boot.Banner</code> 接口的 <code>printBanner()</code> 方法。</p><p>也可以使用 <code>spring.main.banner-mode</code> 属性决定将banner打印到何处， System.out （console），配置的logger（log）或都不输出（off)。</p><p>打印的banner将注册成一个名为 <code>springBootBanner</code> 的单例bean。</p><h4 id="生成工具"><a href="#生成工具" class="headerlink" title="生成工具"></a>生成工具</h4><p><code>banner.txt</code> 里的字符画手工的来编辑是一件非常困难的事。所以，借助下面这些工具，可以很容易地根据文字或图片来生成用于Banner输出的字符画。</p><ul><li><p><a href="http://www.asciiworld.com/" target="_blank" rel="noopener">http://www.asciiworld.com/</a></p></li><li><p><a href="http://patorjk.com/software/taag" target="_blank" rel="noopener">http://patorjk.com/software/taag</a></p></li><li><p><a href="http://www.degraeve.com/img2txt.php" target="_blank" rel="noopener">http://www.degraeve.com/img2txt.php</a></p></li><li><p><a href="http://www.network-science.de/ascii/" target="_blank" rel="noopener">http://www.network-science.de/ascii/</a></p></li></ul>]]></content>
     
