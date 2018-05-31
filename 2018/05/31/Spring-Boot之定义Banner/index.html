@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Python," />
+  <meta name="keywords" content="Spring Boot," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="type和isinstance区别 type()不会认为子类是一种父类类型。 isinstance()会认为子类是一种父类类型。  python成员运算符测试实例中包含了一系列的成员，包括字符串、列表或元组。    运算符 描述      in 在指定序列中找到值返回Ture，否则返回False   not in 在指定的序列中没有找到值返回Ture    python身份运算符身份运算符用于比较">
-<meta name="keywords" content="Python">
+<meta name="description" content="自定义Banner通过在classpath下添加一个 banner.txt 或设置 banner.location 来指定相应的文件可以改变启动过程中打印的banner,方式非常简单，只需要在Spring Boot工程的 /src/main/resources 目录下创建一个 banner.txt 文件，然后将ASCII字符画复制进去，就能替换默认的banner了。 如果这个文件有特殊的编码，可以">
+<meta name="keywords" content="Spring Boot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python基础笔记(五)">
-<meta property="og:url" content="http://struggledhard.com/2018/03/25/Python基础笔记05/index.html">
+<meta property="og:title" content="Spring Boot之定义Banner">
+<meta property="og:url" content="http://struggledhard.com/2018/05/31/Spring-Boot之定义Banner/index.html">
 <meta property="og:site_name" content="struggledhard&#39;s blog">
-<meta property="og:description" content="type和isinstance区别 type()不会认为子类是一种父类类型。 isinstance()会认为子类是一种父类类型。  python成员运算符测试实例中包含了一系列的成员，包括字符串、列表或元组。    运算符 描述      in 在指定序列中找到值返回Ture，否则返回False   not in 在指定的序列中没有找到值返回Ture    python身份运算符身份运算符用于比较">
+<meta property="og:description" content="自定义Banner通过在classpath下添加一个 banner.txt 或设置 banner.location 来指定相应的文件可以改变启动过程中打印的banner,方式非常简单，只需要在Spring Boot工程的 /src/main/resources 目录下创建一个 banner.txt 文件，然后将ASCII字符画复制进去，就能替换默认的banner了。 如果这个文件有特殊的编码，可以">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-25T14:37:20.197Z">
+<meta property="og:updated_time" content="2018-05-31T13:10:20.819Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python基础笔记(五)">
-<meta name="twitter:description" content="type和isinstance区别 type()不会认为子类是一种父类类型。 isinstance()会认为子类是一种父类类型。  python成员运算符测试实例中包含了一系列的成员，包括字符串、列表或元组。    运算符 描述      in 在指定序列中找到值返回Ture，否则返回False   not in 在指定的序列中没有找到值返回Ture    python身份运算符身份运算符用于比较">
+<meta name="twitter:title" content="Spring Boot之定义Banner">
+<meta name="twitter:description" content="自定义Banner通过在classpath下添加一个 banner.txt 或设置 banner.location 来指定相应的文件可以改变启动过程中打印的banner,方式非常简单，只需要在Spring Boot工程的 /src/main/resources 目录下创建一个 banner.txt 文件，然后将ASCII字符画复制进去，就能替换默认的banner了。 如果这个文件有特殊的编码，可以">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://struggledhard.com/2018/03/25/Python基础笔记05/"/>
+  <link rel="canonical" href="http://struggledhard.com/2018/05/31/Spring-Boot之定义Banner/"/>
 
 
 
 
 
-  <title>Python基础笔记(五) | struggledhard's blog</title>
+  <title>Spring Boot之定义Banner | struggledhard's blog</title>
   
 
 
@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://struggledhard.com/2018/03/25/Python基础笔记05/">
+    <link itemprop="mainEntityOfPage" href="http://struggledhard.com/2018/05/31/Spring-Boot之定义Banner/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="struggledhard">
@@ -302,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python基础笔记(五)</h1>
+          <h1 class="post-title" itemprop="name headline">Spring Boot之定义Banner</h1>
         
 
         <div class="post-meta">
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-25T21:39:36+08:00">
-                2018-03-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-31T20:18:58+08:00">
+                2018-05-31
               </time>
             
 
@@ -337,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python基础/" itemprop="url" rel="index">
-                    <span itemprop="name">Python基础</span>
+                  <a href="/categories/Spring-Boot/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring Boot</span>
                   </a>
                 </span>
 
@@ -374,68 +374,57 @@
       
 
       
-        <h4 id="type和isinstance区别"><a href="#type和isinstance区别" class="headerlink" title="type和isinstance区别"></a>type和isinstance区别</h4><ul>
-<li>type()不会认为子类是一种父类类型。</li>
-<li>isinstance()会认为子类是一种父类类型。</li>
-</ul>
-<h4 id="python成员运算符"><a href="#python成员运算符" class="headerlink" title="python成员运算符"></a>python成员运算符</h4><p>测试实例中包含了一系列的成员，包括字符串、列表或元组。</p>
+        <h4 id="自定义Banner"><a href="#自定义Banner" class="headerlink" title="自定义Banner"></a>自定义Banner</h4><p>通过在classpath下添加一个 <code>banner.txt</code> 或设置 <code>banner.location</code> 来指定相应的文件可以改变启动过程中打印的banner,方式非常简单，只需要在Spring Boot工程的 <code>/src/main/resources</code> 目录下创建一个 <code>banner.txt</code> 文件，然后将ASCII字符画复制进去，就能替换默认的banner了。</p>
+<p>如果这个文件有特殊的编码，可以使用 <code>banner.encoding</code> 设置它（默认为UTF-8）。除了文本文件，也可以添加一个 <code>banner.gif</code>，<code>banner.jpg</code> 或 <code>banner.png</code> 图片，或设置 <code>banner.image.location</code> 属性。图片会转换为字符画（ASCII art）形式，并在所有文本banner上方显示。</p>
+<p>在<code>banner.txt</code>中可以使用如下占位符：</p>
 <table>
 <thead>
 <tr>
-<th>运算符</th>
-<th>描述 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>in</td>
-<td>在指定序列中找到值返回Ture，否则返回False</td>
-</tr>
-<tr>
-<td>not in</td>
-<td>在指定的序列中没有找到值返回Ture</td>
-</tr>
-</tbody>
-</table>
-<h4 id="python身份运算符"><a href="#python身份运算符" class="headerlink" title="python身份运算符"></a>python身份运算符</h4><p>身份运算符用于比较两个对象的存储单元</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
+<th>变量</th>
 <th>描述</th>
-<th>实例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>is</td>
-<td>is是判断两个标识符是不是引用自一个对象</td>
-<td>x is y, 类似 id(x) == id(y) , 如果引用的是同一个对象则返回 True，否则返回 False</td>
+<td>${application.version}</td>
+<td>MANIFEST.MF中声明的应用版本号，例如 Implementation-Version: 1.0 会打印 1.0</td>
 </tr>
 <tr>
-<td>is not</td>
-<td>is not 是判断两个标识符是不是引用自不同对象</td>
-<td>x is not y ， 类似 id(a) != id(b)。如果引用的不是同一个对象则返回结果 True，否则返回 False。</td>
+<td>${application.formatted-version}</td>
+<td>MANIFEST.MF中声明的被格式化后的应用版本号（被括号包裹且以v作为前缀），用于显示，例如( v1.0 )</td>
+</tr>
+<tr>
+<td>${spring-boot.version}</td>
+<td>当前Spring Boot的版本号，例如 2.0.0.RELEASE</td>
+</tr>
+<tr>
+<td>${spring-boot.formatted-version}</td>
+<td>当前Spring Boot被格式化后的版本号（被括号包裹且以v作为前缀）, 用于显示，例如( v2.0.0.RELEASE )</td>
+</tr>
+<tr>
+<td>${Ansi.NAME}（或${AnsiColor.NAME}，${AnsiBackground.NAME},${AnsiStyle.NAME}）</td>
+<td>NAME代表一种ANSI编码，如：${AnsiColor.BRIGHT_RED}</td>
+</tr>
+<tr>
+<td>${application.title}</td>
+<td>MANIFEST.MF 中声明的应用title，例如 Implementation-Title: MyApp 会打印 MyApp</td>
 </tr>
 </tbody>
 </table>
-<p>注： id() 函数用于获取对象内存地址。</p>
-<p>is 用于判断两个变量引用对象是否为同一个， == 用于判断引用变量的值是否相等。</p>
-<h4 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h4><p>Python 中，程序的变量并不是在哪个位置都可以访问的，访问权限决定于这个变量是在哪里赋值的。<br>变量的作用域决定了在哪一部分程序可以访问哪个特定的变量名称。Python的作用域一共有4种，分别是：</p>
+<p>如果想以编程的方式产生一个banner，可以使用 <code>SpringBootApplication.setBanner(…)</code> 方法，并实现 <code>org.springframework.boot.Banner</code> 接口的 <code>printBanner()</code> 方法。</p>
+<p>也可以使用 <code>spring.main.banner-mode</code> 属性决定将banner打印到何处， System.out （console），配置的logger（log）或都不输出（off)。</p>
+<p>打印的banner将注册成一个名为 <code>springBootBanner</code> 的单例bean。</p>
+<h4 id="生成工具"><a href="#生成工具" class="headerlink" title="生成工具"></a>生成工具</h4><p><code>banner.txt</code> 里的字符画手工的来编辑是一件非常困难的事。所以，借助下面这些工具，可以很容易地根据文字或图片来生成用于Banner输出的字符画。</p>
 <ul>
-<li>L （Local） 局部作用域</li>
-<li>E （Enclosing） 闭包函数外的函数中</li>
-<li>G （Global） 全局作用域</li>
-<li>B （Built-in） 内建作用域</li>
+<li><p><a href="http://www.asciiworld.com/" target="_blank" rel="noopener">http://www.asciiworld.com/</a></p>
+</li>
+<li><p><a href="http://patorjk.com/software/taag" target="_blank" rel="noopener">http://patorjk.com/software/taag</a></p>
+</li>
+<li><p><a href="http://www.degraeve.com/img2txt.php" target="_blank" rel="noopener">http://www.degraeve.com/img2txt.php</a></p>
+</li>
+<li><p><a href="http://www.network-science.de/ascii/" target="_blank" rel="noopener">http://www.network-science.de/ascii/</a></p>
+</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = int(<span class="number">2.9</span>)  <span class="comment"># 内建作用域</span></span><br><span class="line"> </span><br><span class="line">g_count = <span class="number">0</span>  <span class="comment"># 全局作用域</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">()</span>:</span></span><br><span class="line">    o_count = <span class="number">1</span>  <span class="comment"># 闭包函数外的函数中</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        i_count = <span class="number">2</span>  <span class="comment"># 局部作用域</span></span><br></pre></td></tr></table></figure>
-<p>定义在函数内部的变量拥有一个局部作用域，定义在函数外的拥有全局作用域。</p>
-<h4 id="global和nonlocal关键字"><a href="#global和nonlocal关键字" class="headerlink" title="global和nonlocal关键字"></a>global和nonlocal关键字</h4><p>当内部作用域想修改外部作用域的变量时，就要用到global和nonlocal关键字了。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">num = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun1</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> num  <span class="comment"># 需要使用 global 关键字声明</span></span><br><span class="line">    print(num) </span><br><span class="line">    num = <span class="number">123</span></span><br><span class="line">    print(num)</span><br><span class="line">fun1()</span><br><span class="line"></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">123</span></span><br></pre></td></tr></table></figure>
-<p>如果要修改嵌套作用域（enclosing 作用域，外层非全局作用域）中的变量则需要 nonlocal 关键字了，如下实例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">()</span>:</span></span><br><span class="line">    num = <span class="number">10</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">nonlocal</span> num   <span class="comment"># nonlocal关键字声明</span></span><br><span class="line">        num = <span class="number">100</span></span><br><span class="line">        print(num)</span><br><span class="line">    inner()</span><br><span class="line">    print(num)</span><br><span class="line">outer()</span><br><span class="line"></span><br><span class="line"><span class="number">100</span></span><br><span class="line"><span class="number">100</span></span><br></pre></td></tr></table></figure>
-<h4 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h4><p><a href="http://www.runoob.com/python3/python3-tutorial.html" target="_blank" rel="noopener">菜鸟教程Python3</a></p>
-<p><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" target="_blank" rel="noopener">廖雪峰的官方网站Python3</a></p>
 
       
     </div>
@@ -453,7 +442,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+            <a href="/tags/Spring-Boot/" rel="tag"><i class="fa fa-tag"></i> Spring Boot</a>
           
         </div>
       
@@ -466,8 +455,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/25/Python基础笔记04/" rel="next" title="Python基础笔记(四)">
-                <i class="fa fa-chevron-left"></i> Python基础笔记(四)
+              <a href="/2018/05/29/Java注解笔记/" rel="next" title="Java注解笔记">
+                <i class="fa fa-chevron-left"></i> Java注解笔记
               </a>
             
           </div>
@@ -475,10 +464,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/30/Android性能优化/" rel="prev" title="Android性能优化">
-                Android性能优化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -701,7 +686,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#type和isinstance区别"><span class="nav-number">1.</span> <span class="nav-text">type和isinstance区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python成员运算符"><span class="nav-number">2.</span> <span class="nav-text">python成员运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python身份运算符"><span class="nav-number">3.</span> <span class="nav-text">python身份运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量作用域"><span class="nav-number">4.</span> <span class="nav-text">变量作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#global和nonlocal关键字"><span class="nav-number">5.</span> <span class="nav-text">global和nonlocal关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#学习资料"><span class="nav-number">6.</span> <span class="nav-text">学习资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义Banner"><span class="nav-number">1.</span> <span class="nav-text">自定义Banner</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成工具"><span class="nav-number">2.</span> <span class="nav-text">生成工具</span></a></li></ol></div>
             
 
           </div>

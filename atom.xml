@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://struggledhard.com/"/>
-  <updated>2018-05-29T12:33:27.639Z</updated>
+  <updated>2018-05-31T13:10:20.819Z</updated>
   <id>http://struggledhard.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring Boot之定义Banner</title>
+    <link href="http://struggledhard.com/2018/05/31/Spring-Boot%E4%B9%8B%E5%AE%9A%E4%B9%89Banner/"/>
+    <id>http://struggledhard.com/2018/05/31/Spring-Boot之定义Banner/</id>
+    <published>2018-05-31T12:18:58.000Z</published>
+    <updated>2018-05-31T13:10:20.819Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="自定义Banner"><a href="#自定义Banner" class="headerlink" title="自定义Banner"></a>自定义Banner</h4><p>通过在classpath下添加一个 <code>banner.txt</code> 或设置 <code>banner.location</code> 来指定相应的文件可以改变启动过程中打印的banner,方式非常简单，只需要在Spring Boot工程的 <code>/src/main/resources</code> 目录下创建一个 <code>banner.txt</code> 文件，然后将ASCII字符画复制进去，就能替换默认的banner了。</p><p>如果这个文件有特殊的编码，可以使用 <code>banner.encoding</code> 设置它（默认为UTF-8）。除了文本文件，也可以添加一个 <code>banner.gif</code>，<code>banner.jpg</code> 或 <code>banner.png</code> 图片，或设置 <code>banner.image.location</code> 属性。图片会转换为字符画（ASCII art）形式，并在所有文本banner上方显示。</p><p>在<code>banner.txt</code>中可以使用如下占位符：</p><table><thead><tr><th>变量</th><th>描述</th></tr></thead><tbody><tr><td>${application.version}</td><td>MANIFEST.MF中声明的应用版本号，例如 Implementation-Version: 1.0 会打印 1.0</td></tr><tr><td>${application.formatted-version}</td><td>MANIFEST.MF中声明的被格式化后的应用版本号（被括号包裹且以v作为前缀），用于显示，例如( v1.0 )</td></tr><tr><td>${spring-boot.version}</td><td>当前Spring Boot的版本号，例如 2.0.0.RELEASE</td></tr><tr><td>${spring-boot.formatted-version}</td><td>当前Spring Boot被格式化后的版本号（被括号包裹且以v作为前缀）, 用于显示，例如( v2.0.0.RELEASE )</td></tr><tr><td>${Ansi.NAME}（或${AnsiColor.NAME}，${AnsiBackground.NAME},${AnsiStyle.NAME}）</td><td>NAME代表一种ANSI编码，如：${AnsiColor.BRIGHT_RED}</td></tr><tr><td>${application.title}</td><td>MANIFEST.MF 中声明的应用title，例如 Implementation-Title: MyApp 会打印 MyApp</td></tr></tbody></table><p>如果想以编程的方式产生一个banner，可以使用 <code>SpringBootApplication.setBanner(…)</code> 方法，并实现 <code>org.springframework.boot.Banner</code> 接口的 <code>printBanner()</code> 方法。</p><p>也可以使用 <code>spring.main.banner-mode</code> 属性决定将banner打印到何处， System.out （console），配置的logger（log）或都不输出（off)。</p><p>打印的banner将注册成一个名为 <code>springBootBanner</code> 的单例bean。</p><h4 id="生成工具"><a href="#生成工具" class="headerlink" title="生成工具"></a>生成工具</h4><p><code>banner.txt</code> 里的字符画手工的来编辑是一件非常困难的事。所以，借助下面这些工具，可以很容易地根据文字或图片来生成用于Banner输出的字符画。</p><ul><li><p><a href="http://www.asciiworld.com/" target="_blank" rel="noopener">http://www.asciiworld.com/</a></p></li><li><p><a href="http://patorjk.com/software/taag" target="_blank" rel="noopener">http://patorjk.com/software/taag</a></p></li><li><p><a href="http://www.degraeve.com/img2txt.php" target="_blank" rel="noopener">http://www.degraeve.com/img2txt.php</a></p></li><li><p><a href="http://www.network-science.de/ascii/" target="_blank" rel="noopener">http://www.network-science.de/ascii/</a></p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;自定义Banner&quot;&gt;&lt;a href=&quot;#自定义Banner&quot; class=&quot;headerlink&quot; title=&quot;自定义Banner&quot;&gt;&lt;/a&gt;自定义Banner&lt;/h4&gt;&lt;p&gt;通过在classpath下添加一个 &lt;code&gt;banner.txt&lt;/code&gt; 
+      
+    
+    </summary>
+    
+      <category term="Spring Boot" scheme="http://struggledhard.com/categories/Spring-Boot/"/>
+    
+    
+      <category term="Spring Boot" scheme="http://struggledhard.com/tags/Spring-Boot/"/>
+    
+  </entry>
   
   <entry>
     <title>Java注解笔记</title>
@@ -525,33 +550,6 @@
     
     
       <category term="Python" scheme="http://struggledhard.com/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git学习笔记</title>
-    <link href="http://struggledhard.com/2018/03/23/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://struggledhard.com/2018/03/23/Git学习笔记/</id>
-    <published>2018-03-23T13:59:54.000Z</published>
-    <updated>2018-03-26T14:18:54.720Z</updated>
-    
-    <content type="html"><![CDATA[<p>Git是目前世界上最先进的分布式版本控制系统，堪称高端大气上档次。作为程序猿如果不了解Git相关知识都不好意思出去装一波。最早Git是在Linux上跑，但现在可以在Linux、Unix、Mac、Windows各个平台上奔跑。本人是下载了Windows版的Git，msysgit是Windows版的Git，从<a href="http://msysgit.github.io/" target="_blank" rel="noopener">http://msysgit.github.io/</a>下载，默认安装即可。完成后打开<code>“Git”---&gt;“Git Bash”</code>，配置一下自己的身份，这样在提交代码的时候就知道是谁提交的了，在命令行里设置你的名字和Email地址：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"your name"</span></span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.email <span class="string">"email@XXX.com"</span></span><br></pre></td></tr></table></figure><h3 id="创建代码仓库"><a href="#创建代码仓库" class="headerlink" title="创建代码仓库"></a>创建代码仓库</h3><p>首先切换到某盘某目录下：<code>&quot;cd d：&quot;</code>表示切换到D盘，然后<code>“cd codes/test”</code>表示到test这一目录下，然后在这个目录下输入此命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure><p>只需要一行命令就可以完成创建代码仓库的操作，即就会把此目录变成Git可以管理的仓库，这只是一个空仓库。可以在目录下看见一个隐藏的 .git 文件夹，这个文件夹就是用来记录本地所有的Git操作，可以通过 <code>ls -al</code> 命令来查看一下。</p><h3 id="提交本地文件"><a href="#提交本地文件" class="headerlink" title="提交本地文件"></a>提交本地文件</h3><p>第一步，使用 <code>git add &lt;file&gt;</code> 将本地想要添加的文件添加到仓库，可以反复多次使用，添加多个文件，文件一定要是仓库所在目录中的，别的地方找不到。<code>git add .</code> 可以一次性将所有文件添加好。</p><p>第二步，使用 <code>git commit -m &quot;XXX&quot;</code> 将文件提交到仓库，-m后面是输入提交的描述信息，可任意输入，但最好是有用的信息。</p><h3 id="Git进阶"><a href="#Git进阶" class="headerlink" title="Git进阶"></a>Git进阶</h3><p><code>git add</code> 命令添加文件，实际上就是把文件修改添加到暂存区（Stage）。</p><p><code>git commit</code> 命令提交文件，就是把暂存区的所有文件一次性提交到当前分支。</p><p><code>git status</code> 命令查看文件修改情况。status会时刻掌握仓库状态，当文件被修改后，此命令会显示修改状态。显示上次提交更新后或写入缓存的改动。</p><p><code>git diff</code>  查看修改内容，文件修改了什么内容都会显示出来，显示已写入缓存与已修改但尚未写入缓存的改动的区别。</p><p>尚未缓存的改动：<code>git diff</code> </p><p>查看已缓存的改动： <code>git diff --cached</code>  </p><p>查看已缓存的与未缓存的所有改动：<code>git diff HEAD</code>  </p><p>显示摘要而非整个 diff：<code>git diff --stat</code>  </p><p>命令<code>git tag</code>可以查看所有标签。  </p><p>命令<code>git push origin :refs/tags/&lt;tagname&gt;</code>可以删除一个远程标签。 </p><p><code>git checkout -- file</code> 全部撤销工作区修改，只要是没有add到暂存区都可以撤销，一是文件自修改后没有添加暂存区，二是添加到暂存区后，有做了修改，但又未重新添加。</p><p><code>git reset</code> 版本回退，Git可以让我们在各个版本之间穿梭，HEAD指向当前版本，使用 <code>git reset --hard commit_id</code> 回退我们想要版本。此命令既可以退回版本，又可以把暂存区的修改退回到工作区（文件没有提交也就是没有 <code>git commit</code>），然后再用<code>git checkout -- file</code> 撤销全部工作区修改，用命令 <code>git reset HEAD file</code> 把暂存区修改全部撤销，重新回到工作区。在此期间可以用 <code>git status</code> 查看情况。</p><p><code>git log</code> 查看版本记录，在回退前可以用这个命令查看想要到哪个版本。</p><p><code>git reflog</code> 查看每一次命令，用这命令可以让我们再次回到未来的哪个版本。 </p><p><code>git rm</code> 将文件从暂存区中删除。注意这与<code>git reset HEAD</code> 将文件取消暂存区修改是有区别的。当在文件管理器中把文件删除了也就是在工作区删除了，因为在暂存区中还有此文件，如果的确要从版本库中删除此文件，就用 <code>git rm filename</code> 删掉，然后 <code>git commit</code>。如果删错了，后悔了，就可以用 <code>git checkout -- file</code> 恢复。如果文件已经提交到了版本库中，不要担心，都能回到以前最新版本。</p><h3 id="关联GitHub仓库"><a href="#关联GitHub仓库" class="headerlink" title="关联GitHub仓库"></a>关联GitHub仓库</h3><p>首先注册一个GitHub账号，然后配置好一些所需东西，及生成SSH key。在GitHub上建一个仓库，然后用命令把本地仓库和远程仓库关联起来：</p><p><code>git remote add origin git@github.com:XXX/YYY.git</code>  </p><p>其中XXX是GitHub账户名，YYY是远程仓库名，然后就可以把本地仓库的内容推送到远程仓库。</p><p><code>git push -u origin master</code> 第一次推送用此命令，因为 -u 参数，Git 不但会把本地的 master 分支内容推送的远程新的 master 分支，还会把本地的   master 分支和远程的 master 分支关联起来。</p><p><code>git push origin master</code> 关联后，在以后的推送就可以简化命令。</p><p><code>git clone</code> 将远程仓库克隆到本地。</p><p><code>git remote</code> 查看当前配置有哪些仓库。</p><p><code>git remote -v</code> 可以看到每个别名的实际链接地址。</p><p><code>git checkout -b</code> XXX 表示创建并切换到分支XXX上，相当于以下两句命令：</p><p><code>git branch XXX</code></p><p><code>git checkout XXX</code> 然后可以用命令 <code>git branch</code> 查看当前分支。 </p><p>以下命令可以将指定分支合并到当前分支：</p><p><code>git checkout master</code></p><p><code>git merge XXX</code></p><p>将XXX分支上修改并提交的内容合并到master分支上，然后就可以放心删除分支：<code>git branch -d XXX</code>，当Git无法合并分支时，首先要解决冲突再提交，合并完成，用 <code>git log --graph</code> 查看分支合并图。</p><p><code>git branch -D XXX</code> 当分支没有合并，用此命令强行删除。</p><h3 id="远程修改同步到本地"><a href="#远程修改同步到本地" class="headerlink" title="远程修改同步到本地"></a>远程修改同步到本地</h3><p><code>git fetch origin master</code> 执行此命令后，就会将远程版本库上的代码同步到本地，不过同步下来的代码不会合并到任何分支上，而是会存放在到一个<code>origin/master</code>分支上，这时我们可以通过diff命令来查看远程版本库到底修改了哪些东西：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff origin/master</span><br></pre></td></tr></table></figure><p>之后再调用merge命令将<code>origin/master</code>分支分支上的修改合并到主分支上：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge origin/master</span><br></pre></td></tr></table></figure><p>而pull命令则是相当于将fetch命令和merge命令放在一起执行了，它可以从远程版本库上获取最新的代码并且合并到本地：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure><h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><p>命令<code>git tag &lt;name&gt;</code>用于新建一个标签，默认为 HEAD，也可以指定一个commit id；</p><p><code>git tag -a &lt;tagname&gt; -m &quot;blablabla...&quot;</code>可以指定标签信息；</p><p><code>git tag -s &lt;tagname&gt; -m &quot;blablabla...&quot;</code>可以用 PGP 签名标签；</p><p>命令<code>git push origin &lt;tagname&gt;</code>可以推送一个本地标签；</p><p>命令<code>git push origin --tags</code>可以推送全部未推送过的本地标签；</p><p>命令<code>git tag -d &lt;tagname&gt;</code>可以删除一个本地标签；</p><h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰官网：Git精品教程</a></p><p><a href="http://wiki.jikexueyuan.com/project/git-tutorial/" target="_blank" rel="noopener">极客学院Git教程</a></p><p><a href="http://www.runoob.com/git/git-tutorial.html" target="_blank" rel="noopener">菜鸟教程Git教程</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Git是目前世界上最先进的分布式版本控制系统，堪称高端大气上档次。作为程序猿如果不了解Git相关知识都不好意思出去装一波。最早Git是在Linux上跑，但现在可以在Linux、Unix、Mac、Windows各个平台上奔跑。本人是下载了Windows版的Git，msysgi
-      
-    
-    </summary>
-    
-      <category term="Git笔记" scheme="http://struggledhard.com/categories/Git%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Git" scheme="http://struggledhard.com/tags/Git/"/>
-    
-      <category term="版本控制" scheme="http://struggledhard.com/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
     
   </entry>
   
