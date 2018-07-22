@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://struggledhard.com/"/>
-  <updated>2018-07-11T12:50:09.431Z</updated>
+  <updated>2018-06-24T06:14:26.361Z</updated>
   <id>http://struggledhard.com/</id>
   
   <author>
@@ -15,33 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Mybatis的关联映射</title>
-    <link href="http://struggledhard.com/2018/07/11/Mybatis%E7%9A%84%E5%85%B3%E8%81%94%E6%98%A0%E5%B0%84/"/>
-    <id>http://struggledhard.com/2018/07/11/Mybatis的关联映射/</id>
-    <published>2018-07-11T12:47:39.000Z</published>
-    <updated>2018-07-11T12:50:09.431Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="一对一"><a href="#一对一" class="headerlink" title="一对一"></a>一对一</h4>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;一对一&quot;&gt;&lt;a href=&quot;#一对一&quot; class=&quot;headerlink&quot; title=&quot;一对一&quot;&gt;&lt;/a&gt;一对一&lt;/h4&gt;
-      
-    
-    </summary>
-    
-      <category term="Mybatis" scheme="http://struggledhard.com/categories/Mybatis/"/>
-    
-    
-      <category term="Java" scheme="http://struggledhard.com/tags/Java/"/>
-    
-      <category term="Mybatis" scheme="http://struggledhard.com/tags/Mybatis/"/>
-    
-  </entry>
   
   <entry>
     <title>20个案例教你在Java 8 中如何处理日期和时间?</title>
@@ -562,6 +535,32 @@
     
     
       <category term="Android" scheme="http://struggledhard.com/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python基础笔记(五)</title>
+    <link href="http://struggledhard.com/2018/03/25/Python%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B005/"/>
+    <id>http://struggledhard.com/2018/03/25/Python基础笔记05/</id>
+    <published>2018-03-25T13:39:36.000Z</published>
+    <updated>2018-03-25T14:37:20.197Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="type和isinstance区别"><a href="#type和isinstance区别" class="headerlink" title="type和isinstance区别"></a>type和isinstance区别</h4><ul><li>type()不会认为子类是一种父类类型。</li><li>isinstance()会认为子类是一种父类类型。</li></ul><h4 id="python成员运算符"><a href="#python成员运算符" class="headerlink" title="python成员运算符"></a>python成员运算符</h4><p>测试实例中包含了一系列的成员，包括字符串、列表或元组。</p><table><thead><tr><th>运算符</th><th>描述 </th></tr></thead><tbody><tr><td>in</td><td>在指定序列中找到值返回Ture，否则返回False</td></tr><tr><td>not in</td><td>在指定的序列中没有找到值返回Ture</td></tr></tbody></table><h4 id="python身份运算符"><a href="#python身份运算符" class="headerlink" title="python身份运算符"></a>python身份运算符</h4><p>身份运算符用于比较两个对象的存储单元</p><table><thead><tr><th>运算符</th><th>描述</th><th>实例</th></tr></thead><tbody><tr><td>is</td><td>is是判断两个标识符是不是引用自一个对象</td><td>x is y, 类似 id(x) == id(y) , 如果引用的是同一个对象则返回 True，否则返回 False</td></tr><tr><td>is not</td><td>is not 是判断两个标识符是不是引用自不同对象</td><td>x is not y ， 类似 id(a) != id(b)。如果引用的不是同一个对象则返回结果 True，否则返回 False。</td></tr></tbody></table><p>注： id() 函数用于获取对象内存地址。</p><p>is 用于判断两个变量引用对象是否为同一个， == 用于判断引用变量的值是否相等。</p><h4 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h4><p>Python 中，程序的变量并不是在哪个位置都可以访问的，访问权限决定于这个变量是在哪里赋值的。<br>变量的作用域决定了在哪一部分程序可以访问哪个特定的变量名称。Python的作用域一共有4种，分别是：</p><ul><li>L （Local） 局部作用域</li><li>E （Enclosing） 闭包函数外的函数中</li><li>G （Global） 全局作用域</li><li>B （Built-in） 内建作用域</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = int(<span class="number">2.9</span>)  <span class="comment"># 内建作用域</span></span><br><span class="line"> </span><br><span class="line">g_count = <span class="number">0</span>  <span class="comment"># 全局作用域</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">()</span>:</span></span><br><span class="line">    o_count = <span class="number">1</span>  <span class="comment"># 闭包函数外的函数中</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        i_count = <span class="number">2</span>  <span class="comment"># 局部作用域</span></span><br></pre></td></tr></table></figure><p>定义在函数内部的变量拥有一个局部作用域，定义在函数外的拥有全局作用域。</p><h4 id="global和nonlocal关键字"><a href="#global和nonlocal关键字" class="headerlink" title="global和nonlocal关键字"></a>global和nonlocal关键字</h4><p>当内部作用域想修改外部作用域的变量时，就要用到global和nonlocal关键字了。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line">num = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun1</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> num  <span class="comment"># 需要使用 global 关键字声明</span></span><br><span class="line">    print(num) </span><br><span class="line">    num = <span class="number">123</span></span><br><span class="line">    print(num)</span><br><span class="line">fun1()</span><br><span class="line"></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">123</span></span><br></pre></td></tr></table></figure><p>如果要修改嵌套作用域（enclosing 作用域，外层非全局作用域）中的变量则需要 nonlocal 关键字了，如下实例：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">()</span>:</span></span><br><span class="line">    num = <span class="number">10</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">nonlocal</span> num   <span class="comment"># nonlocal关键字声明</span></span><br><span class="line">        num = <span class="number">100</span></span><br><span class="line">        print(num)</span><br><span class="line">    inner()</span><br><span class="line">    print(num)</span><br><span class="line">outer()</span><br><span class="line"></span><br><span class="line"><span class="number">100</span></span><br><span class="line"><span class="number">100</span></span><br></pre></td></tr></table></figure><h4 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h4><p><a href="http://www.runoob.com/python3/python3-tutorial.html" target="_blank" rel="noopener">菜鸟教程Python3</a></p><p><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" target="_blank" rel="noopener">廖雪峰的官方网站Python3</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;type和isinstance区别&quot;&gt;&lt;a href=&quot;#type和isinstance区别&quot; class=&quot;headerlink&quot; title=&quot;type和isinstance区别&quot;&gt;&lt;/a&gt;type和isinstance区别&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;type
+      
+    
+    </summary>
+    
+      <category term="Python基础" scheme="http://struggledhard.com/categories/Python%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="Python" scheme="http://struggledhard.com/tags/Python/"/>
     
   </entry>
   
